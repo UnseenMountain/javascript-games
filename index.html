@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylespage" href="styles.css">
     <title> Psychic game</title>
 </head>
 
@@ -20,60 +21,10 @@
     </form>
     <div id="answer"></div>
     <script src="game.js"></script>
-    <!-- <p id="name"></p>
-    Your Guess: <input type='text' id='guess'>
-    <button id="checkBtn">Check</button>
 
-    <button id="restart" style="display:none">Restart</button>
-
-    <script>
-        var rannum = Math.floor((Math.random() * 10) +
-        1); //generates a random number and stores it in the rannum variable
-
-        function submitanswer() { //This function analyzes player response and is called by the submit button
-            var playerguess = document.getElementById(
-            "guess"); //grabs whatever the player types in and stores it in the playerguess variable
-            if (playerguess.value == rannum) { //if the value of playerguess is the same as rannum then the player wins
-                alert("You win!");
-                location.reload();
-            }
-            if (playerguess.value > rannum) { //if the player's guess is higher than the random number alert too high
-                alert("Too high!");
-                document.getElementById("guess").value = '';
-            } else if (playerguess.value <
-                rannum) { //if the player's guess is lower than the random number alert too low
-                alert("Too low!");
-                document.getElementById("guess").value = '';
-            }
-
-            document.getElementById('checkBtn').onclick = function () {
-                var guess = document.getElementById('guess').value;
-                checkGuess(guess);
-                counter++;
-
-                if (counter == maxGuesses) {
-                    alert("Game Over");
-                    document.getElementById("checkBtn").disabled = true;
-                }
-            }
-
-            document.getElementById("restart").style.display='block';
-
-            document.getElementById('restart').onclick = function (){
-    rannum = Math.floor((Math.random() * 10) + 1);
-    counter = 0;  
-    guess = 0;
-    document.getElementById("checkBtn").disabled = false;
-    document.getElementById("guess").value='';
-    document.getElementById("restart").style.display='none';
-}
-        }
-
-        function reloaD() { //start over by generating a new number
-            document.getElementById("guess").value = '';
-            location.reload();
-        }
-    </script> -->
+    <div type = "text" id="win"></div>
+    <div type = "text" id="loss"></div>
+    
 </body>
 
 </html>

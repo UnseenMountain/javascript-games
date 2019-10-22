@@ -11,14 +11,17 @@ function namePrompt() {
 
   (function () {
 
-    var guessesLeft, randomNumber, yourNumber, submitButton, answerDisplay, maxGuesses;
+    var guessesLeft, randomNumber, yourNumber, submitButton, answerDisplay, maxGuesses, winLossCounter;
     
 
-    maxGuesses = 3;
+    maxGuesses = 10;
+
+    wins = 0;
+    losses = 0;
 
     // Load all the element references from the DOM
     // so that we don't need to do that every time we chek the answer
-    guessInput = document.getElementById("guess");
+    yourNumber = document.getElementById("guess");
     submitButton = document.getElementById("submitAnswer");
 
     // Let's use a DIV element to display the answer.
@@ -27,6 +30,7 @@ function namePrompt() {
 
     answerDisplay.innerHTML = "Please make a guess!";
 
+
     submitButton.addEventListener("click", function (event) {
         event.stopPropagation();
         event.preventDefault();
@@ -34,6 +38,7 @@ function namePrompt() {
     });
 
     initGame();
+
 
     function initGame () {
         guessesLeft = maxGuesses;
@@ -65,3 +70,16 @@ function namePrompt() {
     }
 
 }());
+
+
+function winLossCounter() {
+
+
+    if (yourNumber === randomNumber){
+        win ++;
+
+    }else{
+        yourNumber !== randomNumber;
+        loss ++;
+    }
+}
