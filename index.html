@@ -10,6 +10,7 @@
 </head>
 
 <body>
+    
     <h1>The Psychic game</h1>
 
     <button type="button" onclick="namePrompt()">Tell me your name</button>
@@ -24,6 +25,27 @@
 
     <div type = "text" id="win"></div>
     <div type = "text" id="loss"></div>
+    
+    <script>
+    var win = 0;
+    var loss = 0;
+
+
+    winContainer = document.getElementById("win");
+    lossContainer = document.getElementById("loss");
+
+
+    function winlossCounter() {
+
+    winContainer.innerHTML = "Wins: " + win;
+    lossContainer.innerHTML = "Losses: " + loss;
+
+}
+
+    winlossCounter();
+    
+    </script>
+ 
     
 </body>
 
