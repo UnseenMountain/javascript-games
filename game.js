@@ -1,36 +1,36 @@
 function namePrompt() {
     var name = prompt("Please enter your name", "");
     if (name != null) {
-      document.getElementById("name").innerHTML =
-      "Hello " + name + "! How are you today?";
+        document.getElementById("name").innerHTML =
+            "Hello " + name + "! How are you today?";
+            
     }
-  }
+}
+
+document.body.style.padding = 20;
 
 
+(function () {
+
+    var guessesLeft, randomNumber, yourNumber, submitButton, answerDisplay, maxGuesses;
+
+    var win = 1;
+    var loss = 0;
+
+    maxGuesses = 4;
 
 
-  (function () {
-
-    var guessesLeft, randomNumber, yourNumber, submitButton, answerDisplay, maxGuesses, winCounter, lossCounter;
-    
-
-    maxGuesses = 10;
-
-    winCounter = 0;
-    lossCounter = 0;
-
-    // Load all the element references from the DOM
-    // so that we don't need to do that every time we chek the answer
     yourNumber = document.getElementById("guess");
     submitButton = document.getElementById("submitAnswer");
-    
-    // Let's use a DIV element to display the answer.
-    // It's nicer than using alert().
+
+    var winContainer = document.getElementById("win");
+    var lossContainer = document.getElementById("loss");
+
     answerDisplay = document.getElementById("answer");
 
     answerDisplay.innerHTML = "Please make a guess!";
 
-    
+
 
     submitButton.addEventListener("click", function (event) {
         event.stopPropagation();
@@ -41,22 +41,40 @@ function namePrompt() {
     initGame();
 
 
-    function initGame () {
+    function initGame() {
         guessesLeft = maxGuesses;
-        randomNumber = Math.floor(Math.random() * 100 + 1); //Picks a random number
+        randomNumber = Math.floor(Math.random() * 15 + 1); //Picks a random number
         yourNumber.value = "";
     }
 
-    function checkAnswer () {
+
+    function winlossDisplay() {
+
+        winContainer.innerHTML = "Wins: " + win;
+        lossContainer.innerHTML = "Losses: " + loss;
+        if(yourNumber == randomNumber){
+            win++
+        }else{
+            loss++
+        }
+
+    }
+    winlossDisplay();
+    
+
+
+
+    function checkAnswer() {
 
         if (yourNumber.value == randomNumber) {
             answerDisplay.innerHTML = "You win! " + randomNumber + " is correct. " +
                 "Please input your next guess to start again.";
+                win++;
             initGame();
             return;
         }
         else if (yourNumber.value > randomNumber) {
-            answerDisplay.innerHTML = "Too dame high fool!";
+            answerDisplay.innerHTML = "Too high fool!";
         }
         else {
             answerDisplay.innerHTML = "Too low!";
@@ -66,6 +84,7 @@ function namePrompt() {
 
         if (guessesLeft === 0) {
             answerDisplay.innerHTML += " No guesses left - you lost!";
+            loss++;
             initGame();
         }
     }
@@ -73,22 +92,3 @@ function namePrompt() {
 }());
 
 
-function winCounter() {
-
-
-    if (yourNumber == randomNumber){
-        win ++;
-
-    }
-}
-
-function lossCounter() {
-   
-       if( yourNumber !== randomNumber){
-            loss ++;
-       }
-         
-}
-
-winCounter()
-lossCounter()
