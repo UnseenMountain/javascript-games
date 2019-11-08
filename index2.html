@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Star Wars RPG</title>
+
+  <!-- Link to the jQuery Library -->
+  <script src="https://code.jquery.com/jquery-2.2.3.js" integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4=" crossorigin="anonymous"></script>
+
+   <!-- Link to the Bootstrap library -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+  <!-- Link to an sdditional CSS file -->
+  <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+
+<body>
+
+  <!-- Overall Bootstrap grid -->
+  <div class="container">
+
+    <!-- Jumbotron with title -->
+    <div class="jumbotron">
+
+      <h1 class="text-center"><strong>Welcome To Star Wars RPG</strong></h1>
+      <h2 class="text-center">Choose Your Character</h2>
+
+    </div> <!-- End Jumbotron -->
+
+    <!-- Contents of the game-->
+    <div class="row">
+
+      <!-- Available characters -->
+      <div class="col-lg-12" id="characters-available">
+        <span class="character-image available-character" id="obi-wan-kenobi-character">
+          <p>Obi-Wan Kenobi</p>
+          <img src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/dark-empire-rey-star-wars-9-the-last-jedi-1567632535.jpg?crop=0.502xw:1.00xh;0,0&resize=480:*" alt="Obi-Wan Kenobi Character" id="obi-wan-kenobi-image" style="width: 200px">
+          <p class="health">120</p>
+        </span>
+
+        <span class="character-image available-character" id="luke-skywalker-character">
+          <p>Luke Skywalker</p>
+          <img src="https://lumiere-a.akamaihd.net/v1/images/new-swcom-slide-mobile_5c92b169.jpeg?region=0,0,1024,626&width=960" alt="Luke Skywalker Character" id="luke-skywalker-image" style="width: 200px">
+          <p class="health">100</p>
+        </span>
+
+        <span class="character-image available-character" id="darth-sidious-character">
+          <p>Darth Sidious</p>
+          <img src="https://starwarsblog.starwars.com/wp-content/uploads/2018/05/star-wars-galaxy-of-heroes-tall.jpg" alt="Darth Sidious Character" id="darth-sidious-image" style="width: 200px; height: 100px">
+          <p class="health">150</p>
+        </span>
+
+        <span class="character-image available-character" id="darth-maul-character">
+          <p>Darth Maul</p>
+          <img src="https://lumiere-a.akamaihd.net/v1/images/the-last-jedi-theatrical-poster-tall-a_6a776211.jpeg?region=0%2C53%2C1536%2C768&width=960" alt="Darth Maul Character" id="darth-maul-image" style="width: 200px">
+          <p class="health">180</p>
+        </span>
+      </div> <!-- End available characters -->
+
+      <!-- Your chosen character -->
+      <div class="col-lg-12" id="chosen-character">
+        <h2>Your Character</h2>
+      </div> <!-- End your chosen character-->
+
+      <!-- Enemies available to attack -->
+      <div class="col-lg-12" id="enemies-available">
+        <h2>Enemies Available To Attack</h2>
+      </div> <!-- End enemies available to attack -->
+
+      <!-- Fight section -->
+      <div class="col-lg-12" id="fight-section">
+        <h2>Fight Section</h2>
+        <button id="attack">Attack</button>
+      </div> <!-- End fight section -->
+
+      <!-- Defender section -->
+      <div class="col-lg-12" id="defender-section">
+        <h2>Defender</h2>
+      </div> <!-- End defender section -->
+
+      <!-- Game message section -->
+      <div class="col-lg-12" id="message-section">
+        <div id="game-message"></div>
+        <button id="restart">Restart</button>
+      </div> <!-- Game message section -->
+
+    </div> <!-- End contents of the game -->
+
+  </div> <!-- End Bootstrap grid -->
+
+  <script type="text/javascript" src="game.js"></script>
+
+</body>
+</html>
+
+
+
+<!-- // //determines if the user has choosen a chacater
+// var characterSelected = false;
+
+// //determines if the user has choosen a enemy.
+// var defenderSelected = false;
+
+// //Stores the choosen character
+// var character = {};
+
+// //Stores the chossen enemy
+// var enemy = {};
+
+// //stores enemys defeated
+// var enemysDefeated = 0;
+
+// gameOver = false;
+
+
+
+// var luke = {
+//     name: "Luke Skywalker",
+//     health: 120,
+
+//     attack: 9,
+//     baseAttack: 9
+// };
+
+// var V = {
+//     name: "V",
+//     health: 120,
+
+//     attack: 12,
+//     baseAttack: 12
+// };
+
+// var captianPrice = {
+//     name: "Captian Price",
+//     health: 100,
+
+//     attack: 10,
+//     baseAttack: 10
+// };
+
+// var keanuReeves = {
+//     name: "Keanu Reeves",
+//     health: 160,
+
+//     attack: 15,
+//     baseAttack: 15
+// };
+
+// function initializeCharacter(chosenCharacter){
+//     character.name = chosenCharacter.name;
+//     character.health = chosenCharacter.health;
+//     character.attack = chosenCharacter.attack;
+//     character.baseAttack = chosenCharacter.baseAttack;
+
+
+// }
+
+// function getEnemyValues(chosenEnemy){
+//     enemy.name = chosenEnemy.name;
+//     enemy.health = chosenEnemy.health;
+//     enemy.attack = chosenEnemy.attack;
+//     enemy.baseAttack = chosenEnemy.baseAttack;
+// }
+
+// function moveEnemes(){
+//     $(".avalible-character").removeClass("avaliable-character").addClass("enemy-character");
+//     $("#avilable-enemys").append($(".enemy-character"));
+// }
+
+// function resetGame(){
+//     //gets the player health its children.
+//     $("#luke-Skywalker").children(".health").html(lukeSkywalker.health);
+//     $("#V").children(".health").html(V.health);
+//     $("#captian-Price").children(".health").html(captianPrice.health);
+//     $("#Jonney").children(".health").html(Jonney.health);
+
+//     $(".character-image").removeClass("chosen-character enemy-character defender-character").addClass("available-character");
+//     var avaliable = $(".avaliable-character").show();
+//     $("#characters-avaliable").html(avaliable);
+
+//     $("#game-message").empty();
+
+//     characterSelected = false;
+//     defenderSelected = false
+//     enemysDefeated = 0;
+//     gameOver = false;
+
+//     character = {};
+//     enemy = {};
+// }
+
+//     $(document).ready(function(){
+
+//     $("#luke-Skywalker").on("click", function(){
+//         console.log("you have choosen Luke Skywalker");
+
+//         if(characterSelected == false){
+//             $("#game-message").empty();
+
+//             initializeCharacter(lukeSkywalker);
+//             characterSelected = true;
+
+//             $("#luke-Skywalker").removeClass("avaliable-character").addClass("defender-character");
+//             $("#defender-section").append(this);
+
+
+//         }else if ((characterSelected == true) && (defenderSelected == false)){
+//             //user chosing a character
+//             if($("#luke-Skywalker").hasClass("enemy-character").addClass("enemy-character")){
+//                 $("#game-message").empty();
+
+//                 //set the users enemy
+//                 initializedefender(lukeSkywalker);
+//                 defenderSelected = true;
+//                 $("#luke-Skywalker").removeClass("enemy-character").addClass("defender-character");
+//                 $("#defender-section").append(this);
+//             }
+            
+//         }
+//     });
+
+//     $("#V").on("click", function(){
+//         console.log("you have choosen V");
+
+//         if(characterSelected == false){
+//             $("#game-message").empty();
+
+//             initializeCharacter(V);
+//             characterSelected = true;
+
+//             $("#V").removeClass("avaliable-character").addClass("defender-character");
+//             $("#defender-section").append(this);
+
+
+//         }else if ((characterSelected == true) && (defenderSelected == false)){
+//             //user chosing a character
+//             if($("#V").hasClass("enemy-character").addClass("enemy-character")){
+//                 $("#game-message").empty();
+
+//                 //set the users enemy
+//                 initializedefender(V);
+//                 defenderSelected = true;
+//                 $("#V").removeClass("enemy-character").addClass("defender-character");
+//                 $("#defender-section").append(this);
+//             }
+            
+//         }
+//     });
+
+//     $("#captian-Price").on("click", function(){
+//         console.log("you have choosen V");
+
+//         if(characterSelected == false){
+//             $("#game-message").empty();
+
+//             initializeCharacter(V);
+//             characterSelected = true;
+
+//             $("#captian-Price").removeClass("avaliable-character").addClass("defender-character");
+//             $("#defender-section").append(this);
+
+
+//         }else if ((characterSelected == true) && (defenderSelected == false)){
+//             //user chosing a character
+//             if($("#captian-Price").hasClass("enemy-character").addClass("enemy-character")){
+//                 $("#game-message").empty();
+
+//                 //set the users enemy
+//                 initializedefender(captian-Price);
+//                 defenderSelected = true;
+//                 $("#captian-Price").removeClass("enemy-character").addClass("defender-character");
+//                 $("#defender-section").append(this);
+//             }
+            
+//         }
+//     });
+
+
+
+//     $("#Jonney").on("click", function(){
+//         console.log("you have choosen Jonney");
+
+//         if(characterSelected == false){
+//             $("#game-message").empty();
+
+//             initializeCharacter(Jonney);
+//             characterSelected = true;
+
+//             $("#Jonney").removeClass("avaliable-character").addClass("defender-character");
+//             $("#defender-section").append(this);
+
+
+//         }else if ((characterSelected == true) && (defenderSelected == false)){
+//             //user chosing a character
+//             if($("#Jonney").hasClass("enemy-character").addClass("enemy-character")){
+//                 $("#game-message").empty();
+
+//                 //set the users enemy
+//                 initializedefender(V);
+//                 defenderSelected = true;
+//                 $("#Jonney").removeClass("enemy-character").addClass("defender-character");
+//                 $("#defender-section").append(this);
+//             }
+            
+//         }
+//     });
+
+// }); -->

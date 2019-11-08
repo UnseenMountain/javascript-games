@@ -1,23 +1,16 @@
-function namePrompt() {
-    var name = prompt("Please enter your name", "");
-    if (name != null) {
-        document.getElementById("name").innerHTML =
-            "Hello " + name + "! How are you today?";
-            
-    }
-}
+
 
 document.body.style.padding = 20;
 
 
 (function () {
 
-    var guessesLeft, randomNumber, yourNumber, submitButton, answerDisplay, maxGuesses;
+    var guessesLeft, randomNumber, yourNumber, submitButton, answerDisplay, maxGuesses, name;
 
-    var win = 1;
+    var win = 0;
     var loss = 0;
 
-    maxGuesses = 4;
+    maxGuesses = 5;
 
 
     yourNumber = document.getElementById("guess");
@@ -37,6 +30,11 @@ document.body.style.padding = 20;
         event.preventDefault();
         checkAnswer();
     });
+    document.getElementById('namePrompt').addEventListener("click", function (event) {
+        event.stopPropagation();
+        event.preventDefault();
+        namePrompt();
+    });
 
     initGame();
 
@@ -52,29 +50,31 @@ document.body.style.padding = 20;
 
         winContainer.innerHTML = "Wins: " + win;
         lossContainer.innerHTML = "Losses: " + loss;
-        if(yourNumber == randomNumber){
-            win++
-        }else{
-            loss++
-        }
 
     }
     winlossDisplay();
-    
+
 
 
 
     function checkAnswer() {
 
         if (yourNumber.value == randomNumber) {
-            answerDisplay.innerHTML = "You win! " + randomNumber + " is correct. " +
-                "Please input your next guess to start again.";
-                win++;
+            if (name) {
+                answerDisplay.innerHTML = "You win " + name + "! " + randomNumber + " is correct. " +
+                    "Please input your next guess to start again.";
+            } else {
+                answerDisplay.innerHTML = "You win! " + randomNumber + " is correct. " +
+                    "Please input your next guess to start again.";
+            }
+            win++;
+            winlossDisplay();
             initGame();
             return;
         }
         else if (yourNumber.value > randomNumber) {
             answerDisplay.innerHTML = "Too high fool!";
+
         }
         else {
             answerDisplay.innerHTML = "Too low!";
@@ -85,7 +85,17 @@ document.body.style.padding = 20;
         if (guessesLeft === 0) {
             answerDisplay.innerHTML += " No guesses left - you lost!";
             loss++;
+            winlossDisplay();
             initGame();
+        }
+    }
+
+    function namePrompt() {
+        name = prompt("Please enter your name", "");
+        if (name != null) {
+            document.getElementById("name").innerHTML =
+                "Hello " + name + "! How are you today?";
+
         }
     }
 

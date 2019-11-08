@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylespage" href="styles.css">
+
     <title> Psychic game</title>
 </head>
 
@@ -13,48 +14,46 @@
 
     <h1>The Psychic game</h1>
 
-    <h1>Hello player please choose a number between 1 and 10. </h1>
+    <h1>Hello player please choose a number between 1 and 15. </h1>
 
-    <button type="button" onclick="namePrompt()">Tell me your name</button>
+    <button type="button" id="namePrompt">Tell me your name</button>
+    <div id="name"></div>
 
-
-    <form>
-        <input type="text" id="guess" />
-        <input type="submit" id="submitAnswer" value="Check answer" />
-    </form>
-    <div id="answer"></div>
-    <script src="assets/javascript/game.js"></script>
-
-    <div type="text" id="win"></div>
-    <div type="text" id="loss"></div>
-    
+    <div>
+        <form>
+            <input type="text" id="guess" />
+            <input type="submit" id="submitAnswer" value="Check answer" />
+        </form>
+        <div id="answer"></div>
 
 
-    <script>
-
-        
-        var win = 0;
-        var loss = 0;
-
-
-        var winContainer = document.getElementById("win");
-        var lossContainer = document.getElementById("loss");
-
-        
-
-        function winlossDisplay() {
-
-            winContainer.innerHTML = "Wins: " + win;
-            lossContainer.innerHTML = "Losses: " + loss;
+        <div type="text" id="win"></div>
+        <div type="text" id="loss"></div>
 
 
 
-        }
+        <script>
+            var win = 0;
+            var loss = 0;
 
-        winlossDisplay();
 
-    </script>
+            var winContainer = document.getElementById("win");
+            var lossContainer = document.getElementById("loss");
 
+
+
+            function winlossDisplay() {
+
+                winContainer.innerHTML = "Wins: " + win;
+                lossContainer.innerHTML = "Losses: " + loss;
+
+
+
+            }
+
+            winlossDisplay();
+        </script>
+        <script src="assets/javascript/game.js"></script>
 
 </body>
 
