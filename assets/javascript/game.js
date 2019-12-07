@@ -59,7 +59,7 @@ document.body.style.padding = 20;
 
     function checkAnswer() {
 
-        if (yourNumber.value == randomNumber) {
+        if (yourNumber.value === randomNumber) {
             if (name) {
                 answerDisplay.innerHTML = "You win " + name + "! " + randomNumber + " is correct. " +
                     "Please input your next guess to start again.";
@@ -70,7 +70,7 @@ document.body.style.padding = 20;
             win++;
             winlossDisplay();
             initGame();
-            return;
+            
         }
         else if (yourNumber.value > randomNumber) {
             answerDisplay.innerHTML = "Too high fool!";
